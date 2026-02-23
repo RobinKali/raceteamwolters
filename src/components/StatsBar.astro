@@ -1,0 +1,98 @@
+---
+interface Stat {
+    label: string;
+    value: number;
+}
+
+interface Props {
+    stats?: Stat[];
+}
+
+const defaultStats: Stat[] = [
+    { label: "Aantal racers", value: 150 },
+    { label: "Content makers", value: 13 },
+    { label: "Dagen per week", value: 7 },
+    { label: "Hosts", value: 9 },
+];
+
+const { stats = defaultStats } = Astro.props;
+---
+
+<section class="bg-brand-dark py-20 border-y border-white/5" id="stats-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {
+                stats.map((stat) => (
+                    <div class="flex flex-col items-center justify-center text-center group">
+                        <div
+                            class="text-5xl md:text-7xl font-headings font-bold text-brand-red mb-2 tracking-tighter drop-shadow-[0_0_15px_rgba(192,57,43,0.3)] group-hover:scale-110 transition-transform duration-500 stat-value"
+                            data-value={stat.value}
+                        >
+                            0
+                        </div>
+                        <div class="text-sm md:text-base text-gray-400 font-headings uppercase tracking-widest group-hover:text-white transition-colors duration-300">
+                            {stat.label}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    // Intersection Observer for animated counting
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+    };
+
+    const animateValue = (
+        obj: Element,
+        start: number,
+        end: number,
+        duration: number,
+    ) => {
+        let startTimestamp: number | null = null;
+        const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+                (timestamp - startTimestamp) / duration,
+                1,
+            );
+
+            // easeOutQuart
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+
+            obj.innerHTML = Math.floor(
+                easeProgress * (end - start) + start,
+            ).toString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const elements = entry.target.querySelectorAll(".stat-value");
+                elements.forEach((el) => {
+                    const finalValue = parseInt(
+                        el.getAttribute("data-value") || "0",
+                        10,
+                    );
+                    animateValue(el, 0, finalValue, 2000); // 2 second animation
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const statsSection = document.getElementById("stats-section");
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+</script>

@@ -1,0 +1,102 @@
+---
+const { isMobile = false } = Astro.props;
+
+const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Dagelijkse Races", href: "/dagelijkseraces" },
+    { label: "Evenementen", href: "/evenementen" },
+    { label: "Content team", href: "/content-team" },
+    { label: "Uitslagen", href: "/uitslagen" },
+    { label: "Merchandise & Sponsoren", href: "/merchandise" },
+    {
+        label: "Media",
+        href: "/media",
+        subItems: [{ label: "Historie", href: "/historie" }],
+    },
+    { label: "Contact", href: "/contact" },
+    { label: "Login", href: "/login" },
+    { label: "Forum", href: "/forum", class: "text-brand-yellow font-bold" },
+];
+
+const baseClasses = isMobile
+    ? "block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-brand-gray transition-colors font-headings uppercase tracking-wider"
+    : "inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:text-brand-red transition-colors font-headings uppercase tracking-wider group relative";
+---
+
+<nav class={isMobile ? "space-y-1" : "flex items-center space-x-4"}>
+    {
+        navItems.map((item) =>
+            item.subItems && !isMobile ? (
+                <div class="relative group">
+                    <button
+                        class={
+                            baseClasses + (item.class ? ` ${item.class}` : "")
+                        }
+                    >
+                        {item.label}
+                        <svg
+                            class="ml-1 h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            />
+                        </svg>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-brand-gray ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div
+                            class="py-1"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="options-menu"
+                        >
+                            <a
+                                href={item.href}
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-brand-dark hover:text-white font-headings uppercase"
+                            >
+                                Overview
+                            </a>
+                            {item.subItems.map((subItem) => (
+                                <a
+                                    href={subItem.href}
+                                    class="block px-4 py-2 text-sm text-gray-300 hover:bg-brand-dark hover:text-white font-headings uppercase"
+                                    role="menuitem"
+                                >
+                                    {subItem.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <>
+                    <a
+                        href={item.href}
+                        class={
+                            baseClasses + (item.class ? ` ${item.class}` : "")
+                        }
+                    >
+                        {item.label}
+                    </a>
+                    {item.subItems && isMobile && (
+                        <div class="pl-6 space-y-1">
+                            {item.subItems.map((subItem) => (
+                                <a
+                                    href={subItem.href}
+                                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white hover:bg-brand-gray transition-colors font-headings uppercase"
+                                >
+                                    {subItem.label}
+                                </a>
+                            ))}
+                        </div>
+                    )}
+                </>
+            ),
+        )
+    }
+</nav>

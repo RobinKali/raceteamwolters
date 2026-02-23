@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Login - Race Team Wolters"
+    description="Login op het portaal van Race Team Wolters om inzicht te krijgen in je statistieken en het community forum."
+>
+    <div
+        class="min-h-[80vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark relative overflow-hidden"
+    >
+        <!-- Abstract racing line background -->
+        <div class="absolute inset-0 pointer-events-none opacity-20">
+            <svg
+                class="absolute w-full h-full"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+            >
+                <path
+                    d="M0,50 Q25,20 50,50 T100,50"
+                    fill="none"
+                    stroke="#C0392B"
+                    stroke-width="0.5"></path>
+                <path
+                    d="M0,60 Q25,30 50,60 T100,60"
+                    fill="none"
+                    stroke="#222222"
+                    stroke-width="1"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-md w-full relative z-10">
+            <div class="text-center mb-10">
+                <div
+                    class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-brand-dark font-headings font-bold text-3xl mx-auto mb-6 shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                >
+                    RTW
+                </div>
+                <h2
+                    class="text-4xl font-headings font-bold uppercase tracking-wider text-white mb-2"
+                >
+                    Leden <span class="text-brand-red">Login</span>
+                </h2>
+                <p class="text-gray-400 font-roboto">
+                    Welkom terug coureur. Log in op het portaal.
+                </p>
+            </div>
+
+            <div
+                class="bg-brand-gray/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/10"
+            >
+                <form class="space-y-6" action="#" method="POST">
+                    <div>
+                        <label
+                            for="username"
+                            class="block font-headings uppercase text-sm text-gray-300 font-bold mb-2 tracking-wide"
+                            >Gebruikersnaam / Email</label
+                        >
+                        <div class="relative">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500"
+                            >
+                                <svg
+                                    class="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                autocomplete="username"
+                                required
+                                class="w-full bg-brand-dark/50 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all"
+                                placeholder="PSN ID of Email adres"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            for="password"
+                            class="block font-headings uppercase text-sm text-gray-300 font-bold mb-2 tracking-wide flex justify-between"
+                        >
+                            <span>Wachtwoord</span>
+                            <a
+                                href="#"
+                                class="text-brand-yellow hover:text-white transition-colors text-xs font-normal Normal-case lowercase first-letter:uppercase"
+                                >Vergeten?</a
+                            >
+                        </label>
+                        <div class="relative">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500"
+                            >
+                                <svg
+                                    class="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autocomplete="current-password"
+                                required
+                                class="w-full bg-brand-dark/50 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all"
+                                placeholder="••••••••"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input
+                            id="remember-me"
+                            name="remember-me"
+                            type="checkbox"
+                            class="h-4 w-4 bg-brand-dark border-white/10 rounded text-brand-red focus:ring-brand-red focus:ring-offset-brand-gray"
+                        />
+                        <label
+                            for="remember-me"
+                            class="ml-2 block text-sm text-gray-400 font-roboto"
+                        >
+                            Gegevens onthouden
+                        </label>
+                    </div>
+
+                    <div>
+                        <button
+                            type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-bold font-headings uppercase tracking-wider text-white bg-brand-red hover:bg-white hover:text-brand-red focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-gray focus:ring-brand-red transition-all duration-300"
+                        >
+                            Inloggen
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-8 text-center border-t border-white/10 pt-6">
+                    <p class="text-sm text-gray-400 font-roboto">
+                        Nog geen onderdeel van het team?
+                        <a
+                            href="/nieuwe-leden"
+                            class="font-bold text-brand-red hover:text-brand-yellow font-headings uppercase tracking-wide ml-1 transition-colors"
+                            >Word Lid</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to redirect to Flarum if needed -->
+    <script>
+        // In a real implementation with Flarum SSO, this form would either
+        // submit to an endpoint that authenticates and then redirects with a token,
+        // or we'd just redirect directly to the Flarum login page if Flarum handles auth.
+        const form = document.querySelector("form");
+        form?.addEventListener("submit", (e) => {
+            e.preventDefault();
+            // Implement JWT SSO logic here
+            alert(
+                "Login functionaliteit is momenteel in ontwikkeling. In de toekomst wordt dit gekoppeld aan het Flarum forum via Single Sign-On.",
+            );
+        });
+    </script>
+</BaseLayout>

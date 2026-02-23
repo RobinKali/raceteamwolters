@@ -1,0 +1,432 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import StatsBar from "../components/StatsBar.astro";
+import SponsorGrid from "../components/SponsorGrid.astro";
+import ForumEmbed from "../components/ForumEmbed.astro";
+---
+
+<BaseLayout title="Home - Race Team Wolters">
+	<HeroSection />
+
+	<!-- Welkom sectie -->
+	<section class="py-24 bg-brand-dark container mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex flex-col lg:flex-row items-center gap-12">
+			<div class="lg:w-1/2">
+				<h2
+					class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-6"
+				>
+					Welkom bij <span class="text-brand-red"
+						>Raceteam Wolters</span
+					>
+				</h2>
+				<div class="w-24 h-1 bg-brand-red mb-8"></div>
+				<div
+					class="space-y-4 text-gray-300 font-roboto text-lg leading-relaxed"
+				>
+					<p>
+						RTW is opgericht in 2023 door Gerald Wolters. Begonnen
+						als klein clubje vrienden met een passie voor (online)
+						racen; inmiddels uitgegroeid tot een team van ruim 150
+						man en nog altijd groeiende.
+					</p>
+					<p>
+						Achter de schermen werkt een groep enthousiaste leden
+						actief mee binnen de organisatie, met als doel het
+						gehele team leuke en spannende races te bezorgen.
+					</p>
+				</div>
+				<div class="mt-8">
+					<a
+						href="/historie"
+						class="inline-flex items-center text-brand-red hover:text-white font-headings uppercase tracking-widest font-bold transition-colors group"
+					>
+						Meer lezen
+						<svg
+							class="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+			<div class="lg:w-1/2">
+				<div class="relative group">
+					<div
+						class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl"
+					>
+					</div>
+					<!-- Assuming RTW-CAR-1.jpg exists in public/images/ -->
+					<img
+						src="/images/RTW-CAR-1.jpg"
+						alt="Race Team Wolters Car"
+						class="w-full rounded-xl shadow-2xl border border-white/10 group-hover:border-brand-red/50 transition-colors duration-500"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- RTW Junior Cup -->
+	<section
+		class="py-24 bg-brand-gray border-y border-white/5 relative overflow-hidden"
+	>
+		<!-- Background Pattern (optional) -->
+		<div
+			class="absolute inset-0 opacity-5"
+			style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"
+		>
+		</div>
+
+		<div
+			class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+		>
+			<h2
+				class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-6"
+			>
+				RTW <span class="text-brand-yellow">Junior cup</span>
+			</h2>
+			<div class="w-24 h-1 bg-brand-yellow mx-auto mb-8"></div>
+			<p
+				class="text-gray-300 font-roboto text-lg leading-relaxed max-w-3xl mx-auto mb-10 text-center"
+			>
+				De RTW Junior Cup is speciaal voor kinderen onder de 16 jaar.
+				Ontdek je talent en leer racen in een veilige en sportieve
+				omgeving met gelijkgestemden.
+			</p>
+			<a
+				href="mailto:ledenwerving@raceteamwolters.nl"
+				class="inline-block bg-brand-yellow text-brand-dark hover:bg-white font-headings font-bold uppercase tracking-wider px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(243,156,18,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]"
+			>
+				Meedoen email ons
+			</a>
+		</div>
+	</section>
+
+	<!-- Evenementen GT7 sectie -->
+	<section
+		class="py-24 bg-brand-dark container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+	>
+		<h2
+			class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-6"
+		>
+			Evenementen <span class="text-brand-red">GT7</span>
+		</h2>
+		<div class="w-24 h-1 bg-brand-red mx-auto mb-8"></div>
+		<p
+			class="text-gray-300 font-roboto text-lg leading-relaxed max-w-3xl mx-auto mb-10"
+		>
+			Doe mee aan onze wekelijkse races en exclusieve kampioenschappen in
+			Gran Turismo 7. Van sprintraces tot endurance, er is voor ieder wat
+			wils.
+		</p>
+		<a
+			href="/contact"
+			class="inline-block border-2 border-brand-red text-white hover:bg-brand-red font-headings font-bold uppercase tracking-wider px-8 py-3 transition-colors duration-300"
+		>
+			Meedoen
+		</a>
+	</section>
+
+	<!-- Samen racen sectie -->
+	<section class="py-24 bg-brand-gray border-y border-white/5">
+		<div
+			class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl"
+		>
+			<h2
+				class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-6"
+			>
+				Samen racen, <span class="text-brand-red">samen groeien</span>
+			</h2>
+			<div class="w-24 h-1 bg-brand-red mx-auto mb-8"></div>
+			<p class="text-gray-300 font-roboto text-lg leading-relaxed mb-10">
+				Binnen RTW streven we ernaar om niet alleen samen te racen, maar
+				ook van elkaar te leren. Respect op de baan en daarbuiten is
+				onze belangrijkste regel. Bekijk ons aanbod aan dagelijkse
+				races.
+			</p>
+			<a
+				href="/dagelijkseraces"
+				class="inline-block bg-transparent text-gray-300 hover:text-white border-b-2 border-brand-red pb-1 font-headings uppercase tracking-widest font-bold transition-all hover:pr-2"
+			>
+				Lees meer &rarr;
+			</a>
+		</div>
+	</section>
+
+	<!-- Championship Winners 2025 -->
+	<section class="py-24 bg-brand-dark">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2
+					class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-4"
+				>
+					Championship <span class="text-brand-yellow"
+						>Winners 2025</span
+					>
+				</h2>
+				<div class="w-24 h-1 bg-brand-yellow mx-auto mb-6"></div>
+				<p class="text-gray-400 max-w-2xl mx-auto font-roboto text-lg">
+					Eregalerij van onze topcoureurs per kampioenschap en klasse.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Porsche GT3 Cup -->
+				<div
+					class="bg-brand-gray p-8 rounded-xl border border-white/5 hover:border-brand-yellow/30 transition-colors"
+				>
+					<h3
+						class="text-xl font-headings font-bold text-white uppercase mb-6 pb-4 border-b border-brand-red/30 flex items-center gap-3"
+					>
+						<span class="text-brand-yellow text-2xl">🏆</span> Porsche
+						GT3 Cup
+					</h3>
+					<ul class="space-y-4 font-roboto text-gray-300">
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">A</span>
+							<span>RTW_GeraldWolters</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">B</span>
+							<span>RTW_De_Rikkert</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">C</span>
+							<span>RTW_RoBeY-D</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">D</span>
+							<span>RTW_Wokkel1976</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- X-BOW Sponsor Cup -->
+				<div
+					class="bg-brand-gray p-8 rounded-xl border border-white/5 hover:border-brand-yellow/30 transition-colors"
+				>
+					<h3
+						class="text-xl font-headings font-bold text-white uppercase mb-6 pb-4 border-b border-brand-red/30 flex items-center gap-3"
+					>
+						<span class="text-brand-yellow text-2xl">🏆</span> X-BOW Sponsor
+						Cup
+					</h3>
+					<ul class="space-y-4 font-roboto text-gray-300">
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">A</span>
+							<span>RTW_PauloooD</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">B</span>
+							<span>RTW_Kenneth v Di</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">C</span>
+							<span>RTW_AlexPr</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">D</span>
+							<span>RTW_Dpdriftig</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Sprint Cup -->
+				<div
+					class="bg-brand-gray p-8 rounded-xl border border-white/5 hover:border-brand-yellow/30 transition-colors"
+				>
+					<h3
+						class="text-xl font-headings font-bold text-white uppercase mb-6 pb-4 border-b border-brand-red/30 flex items-center gap-3"
+					>
+						<span class="text-brand-yellow text-2xl">🏆</span> Sprint
+						Cup
+					</h3>
+					<ul class="space-y-4 font-roboto text-gray-300">
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">A</span>
+							<span>RTW_VanQuish</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">B</span>
+							<span>RTW_Grote Smurf</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">C</span>
+							<span>RTW_ThomR</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">D</span>
+							<span>RTW_Wokkel1976</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Late Night Manufacture Cup -->
+				<div
+					class="bg-brand-gray p-8 rounded-xl border border-white/5 hover:border-brand-yellow/30 transition-colors"
+				>
+					<h3
+						class="text-xl font-headings font-bold text-white uppercase mb-6 pb-4 border-b border-brand-red/30 flex items-center gap-3"
+					>
+						<span class="text-brand-yellow text-2xl">🏆</span> Late Night
+						Mfg
+					</h3>
+					<ul class="space-y-4 font-roboto text-gray-300">
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">A</span>
+							<span>RTW_Savage Banda</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">B</span>
+							<span>RTW_Kenneth van Di</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">C</span>
+							<span>RTW_AlexPr@</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">D</span>
+							<span>RTW_Dustin</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Endurance Cup -->
+				<div
+					class="bg-brand-gray p-8 rounded-xl border border-white/5 hover:border-brand-yellow/30 transition-colors lg:col-start-2"
+				>
+					<h3
+						class="text-xl font-headings font-bold text-white uppercase mb-6 pb-4 border-b border-brand-red/30 flex items-center gap-3"
+					>
+						<span class="text-brand-yellow text-2xl">🏆</span> Endurance
+						Cup
+					</h3>
+					<ul class="space-y-4 font-roboto text-gray-300">
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">A</span>
+							<span>RTW_PauloooD</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">B</span>
+							<span>RTW_Paul-GT3</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">C</span>
+							<span>RTW_L.sluimer</span>
+						</li>
+						<li class="flex justify-between items-center">
+							<span class="font-bold text-brand-red">D</span>
+							<span>RTW_Dustin</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3 Column Feature Grid -->
+	<section class="py-16 bg-brand-gray border-y border-white/5">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<a
+					href="/evenementen"
+					class="group relative overflow-hidden rounded-xl h-64 bg-brand-dark flex items-center justify-center border border-white/5 hover:border-brand-red"
+				>
+					<div
+						class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors z-10"
+					>
+					</div>
+					<div class="relative z-20 text-center p-6">
+						<h3
+							class="text-2xl font-headings font-bold uppercase text-white tracking-widest group-hover:scale-110 transition-transform"
+						>
+							Meetings & Uitjes
+						</h3>
+					</div>
+				</a>
+				<a
+					href="/merchandise"
+					class="group relative overflow-hidden rounded-xl h-64 bg-brand-dark flex items-center justify-center border border-white/5 hover:border-brand-yellow"
+				>
+					<div
+						class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors z-10"
+					>
+					</div>
+					<div class="relative z-20 text-center p-6">
+						<h3
+							class="text-2xl font-headings font-bold uppercase text-white tracking-widest group-hover:scale-110 transition-transform"
+						>
+							RTW Mok
+						</h3>
+						<p
+							class="text-brand-yellow text-sm font-headings uppercase mt-2"
+						>
+							Time Trial Reward
+						</p>
+					</div>
+				</a>
+				<a
+					href="/merchandise"
+					class="group relative overflow-hidden rounded-xl h-64 bg-brand-dark flex items-center justify-center border border-white/5 hover:border-brand-red"
+				>
+					<div
+						class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors z-10"
+					>
+					</div>
+					<div class="relative z-20 text-center p-6">
+						<h3
+							class="text-2xl font-headings font-bold uppercase text-white tracking-widest group-hover:scale-110 transition-transform"
+						>
+							Merchandise
+						</h3>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Forum Embed Section -->
+	<ForumEmbed />
+
+	<StatsBar />
+
+	<SponsorGrid />
+
+	<!-- Final CTA -->
+	<section
+		class="py-24 bg-brand-red relative overflow-hidden flex items-center justify-center text-center"
+	>
+		<!-- Abstract pattern -->
+		<div class="absolute inset-0 opacity-10">
+			<svg
+				class="w-full h-full"
+				viewBox="0 0 100 100"
+				preserveAspectRatio="none"
+			>
+				<path d="M0,100 L100,0 L100,100 Z" fill="white"></path>
+			</svg>
+		</div>
+
+		<div class="relative z-10 container mx-auto px-4 max-w-4xl">
+			<h2
+				class="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider text-white mb-8 drop-shadow-lg"
+			>
+				Neem nu actie
+			</h2>
+			<a
+				href="/contact"
+				class="inline-block bg-white text-brand-red hover:bg-brand-dark hover:text-white font-headings font-bold uppercase tracking-wider px-10 py-5 text-xl transition-all duration-300 shadow-xl hover:scale-105"
+			>
+				Word lid
+			</a>
+		</div>
+	</section>
+</BaseLayout>

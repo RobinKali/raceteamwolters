@@ -1,0 +1,75 @@
+---
+import Nav from "./Nav.astro";
+---
+
+<header
+    class="bg-brand-gray/95 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-white/10"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex items-center gap-3">
+                    <!-- TODO: Replace with downloaded actual logo -->
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-dark font-headings font-bold text-xl"
+                    >
+                        RTW
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex">
+                <Nav />
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="flex items-center md:hidden">
+                <button
+                    type="button"
+                    class="mobile-menu-button text-gray-300 hover:text-white p-2"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                >
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Icon when menu is closed -->
+                    <svg
+                        class="block h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Nav Panel -->
+    <div
+        class="md:hidden hidden bg-brand-dark border-t border-white/10"
+        id="mobile-menu"
+    >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <Nav isMobile={true} />
+        </div>
+    </div>
+</header>
+
+<script>
+    // Simple toggle for mobile menu
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    btn?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+    });
+</script>

@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// This URL would be the actual production URL of the deployed Flarum instance
+// e.g. "https://forum.raceteamwolters.nl" or left as an example for now
+const flarumUrl =
+    import.meta.env.PUBLIC_FLARUM_URL || "https://forum.raceteamwolters.nl";
+
+// In development, the real forum might not exist yet or block iframes,
+// so we'll show a fallback message if it fails to load, but attempt the iframe anyway.
+---
+
+<BaseLayout
+    title="Community Forum - Race Team Wolters"
+    description="Het officiële forum van Race Team Wolters. Praat mee over setups, evenementen en races."
+>
+    <!-- Header -->
+    <section class="pt-32 pb-8 bg-brand-dark border-b border-white/5 relative">
+        <div
+            class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row md:items-center md:justify-between"
+        >
+            <div>
+                <h1
+                    class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-2 drop-shadow"
+                >
+                    RTW <span class="text-brand-yellow">Community Forum</span>
+                </h1>
+                <p class="text-gray-400 font-roboto text-lg">
+                    Deel setups, bespreek races en blijf op de hoogte van alle
+                    mededelingen.
+                </p>
+            </div>
+            <div class="mt-6 md:mt-0">
+                <a
+                    href={flarumUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-headings uppercase tracking-wider font-bold text-gray-400 hover:text-white transition-colors bg-brand-gray px-4 py-2 rounded border border-white/10"
+                >
+                    Open in nieuw tabblad
+                    <svg
+                        class="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Iframe Container -->
+    <!-- We use an iframe to embed the Flarum install directly into the Astro site -->
+    <!-- Note: Flarum must be configured to allow framing from this exact domain via CSP/X-Frame-Options -->
+    <section
+        class="bg-[#111111] w-full relative"
+        style="height: calc(100vh - 200px); min-height: 800px;"
+    >
+        <!-- Loading State -->
+        <div
+            id="forum-loading"
+            class="absolute inset-0 flex flex-col items-center justify-center bg-brand-dark z-0"
+        >
+            <div
+                class="w-16 h-16 border-4 border-brand-red/30 border-t-brand-red rounded-full animate-spin mb-4"
+            >
+            </div>
+            <p
+                class="text-gray-400 font-headings uppercase tracking-widest font-bold animate-pulse"
+            >
+                Forum laden...
+            </p>
+        </div>
+
+        <iframe
+            id="flarum-embed"
+            src={flarumUrl}
+            class="w-full h-full border-0 relative z-10 opacity-0 transition-opacity duration-1000"
+            allow="fullscreen"
+            title="RTW Forum"
+            onload="document.getElementById('flarum-embed').style.opacity = '1'; document.getElementById('forum-loading').style.display = 'none';"
+        ></iframe>
+
+        <!-- Fallback message if iframe gets blocked (e.g. by cross-origin policies during dev) -->
+        <noscript>
+            <div
+                class="absolute inset-0 flex items-center justify-center bg-brand-dark z-20 text-center p-8"
+            >
+                <div>
+                    <svg
+                        class="w-16 h-16 text-brand-yellow mx-auto mb-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        ></path></svg
+                    >
+                    <h2
+                        class="text-2xl font-headings font-bold text-white uppercase mb-2"
+                    >
+                        Javascript Vereist
+                    </h2>
+                    <p class="text-gray-400 font-roboto mb-6">
+                        Het forum component vereist Javascript of open de link
+                        direct.
+                    </p>
+                    <a
+                        href={flarumUrl}
+                        target="_blank"
+                        class="text-brand-yellow font-bold underline"
+                        >Direct naar forum openen</a
+                    >
+                </div>
+            </div>
+        </noscript>
+    </section>
+</BaseLayout>

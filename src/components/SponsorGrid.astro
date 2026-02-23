@@ -1,0 +1,81 @@
+---
+interface Sponsor {
+    name: string;
+    url: string;
+    logoUrl?: string; // Optional if we just want text fallbacks for now
+}
+
+interface Props {
+    sponsors?: Sponsor[];
+    title?: string;
+    description?: string;
+}
+
+const defaultSponsors: Sponsor[] = [
+    { name: "Underground020", url: "https://underground020.weebly.com" },
+    { name: "Krinkel Hoekje", url: "https://krinkelhoekje.nl" },
+    { name: "The Polished", url: "https://thepolished.nl" },
+    { name: "Sign & Styling Oss", url: "https://signandstylingoss.nl" },
+    { name: "Budget Trophy", url: "https://budgettrophy.com" },
+    { name: "Blomen & Zoon", url: "https://blomenzoon.nl" },
+    { name: "CF Technical Support", url: "https://cftechnicalsupport.nl" },
+    { name: "Heman", url: "https://heman.nl" },
+];
+
+const {
+    sponsors = defaultSponsors,
+    title = "Sponsoren",
+    description = "Zonder sponsoren geen Race Team Wolters. Wij danken onze partners voor hun steun en vertrouwen.",
+} = Astro.props;
+---
+
+<section class="py-24 bg-brand-dark overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2
+                class="text-3xl md:text-5xl font-headings font-bold uppercase tracking-wider text-white mb-4"
+            >
+                {title}
+            </h2>
+            <div class="w-24 h-1 bg-brand-red mx-auto mb-6"></div>
+            {
+                description && (
+                    <p class="text-gray-400 max-w-2xl mx-auto font-roboto text-lg">
+                        {description}
+                    </p>
+                )
+            }
+        </div>
+
+        <div
+            class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
+        >
+            {
+                sponsors.map((sponsor, index) => (
+                    <a
+                        href={sponsor.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative w-full p-4 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}
+                    >
+                        <div class="absolute inset-0 bg-brand-gray/30 rounded-lg transform scale-95 group-hover:scale-100 transition-transform duration-300" />
+                        {sponsor.logoUrl ? (
+                            <img
+                                src={sponsor.logoUrl}
+                                alt={`${sponsor.name} logo`}
+                                class="relative z-10 max-h-24 w-auto object-contain drop-shadow-md"
+                                loading="lazy"
+                            />
+                        ) : (
+                            <span class="relative z-10 font-headings font-bold text-xl uppercase tracking-wider text-gray-300 group-hover:text-white drop-shadow-md text-center">
+                                {sponsor.name}
+                            </span>
+                        )}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>

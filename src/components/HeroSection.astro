@@ -1,0 +1,92 @@
+---
+interface Props {
+    title?: string;
+    subtitle?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    videoSrc?: string;
+}
+
+const {
+    title = "It's teamwork that makes the dream work",
+    subtitle = "Beleef de spanning en sensatie van het racen met Race Team Wolters.",
+    buttonText = "Inschrijven",
+    buttonLink = "/nieuwe-leden",
+    videoSrc = "/videos/racing-with-Raceteam-Wolters.publer.com_.mp4",
+} = Astro.props;
+---
+
+<section
+    class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden"
+>
+    <!-- Video Background container -->
+    <div class="absolute inset-0 w-full h-full bg-brand-dark z-0">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+
+        {
+            /* We use a placeholder class if video isn't loaded yet. Make sure to place the video in public/videos/ */
+        }
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover opacity-70"
+        >
+            <source src={videoSrc} type="video/mp4" />
+        </video>
+    </div>
+
+    <!-- Content -->
+    <div
+        class="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto flex flex-col items-center"
+    >
+        <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-headings font-bold text-white uppercase tracking-wider mb-6 leading-tight drop-shadow-lg"
+        >
+            {
+                title
+                    .split(" ")
+                    .map((word, i) => (
+                        <span
+                            class={i === 0 || i === 1 ? "text-brand-red" : ""}
+                        >
+                            {word}{" "}
+                        </span>
+                    ))
+            }
+        </h1>
+
+        <p
+            class="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-roboto font-light drop-shadow-md"
+        >
+            {subtitle}
+        </p>
+
+        <a
+            href={buttonLink}
+            class="inline-block bg-brand-red text-white hover:bg-white hover:text-brand-red font-headings font-bold uppercase tracking-wider px-8 py-4 text-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(192,57,43,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] cursor-pointer"
+        >
+            {buttonText}
+        </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce"
+    >
+        <svg
+            class="w-8 h-8 text-white/70"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</section>

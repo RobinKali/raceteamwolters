@@ -1,0 +1,286 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Nieuwe Leden - Race Team Wolters"
+    description="Schrijf je in als nieuw lid bij Race Team Wolters en doe mee aan onze online races in Gran Turismo 7."
+>
+    <section class="pt-32 pb-16 bg-brand-dark border-b border-white/5 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1
+                class="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider text-white mb-6 drop-shadow"
+            >
+                Word <span class="text-brand-red">Lid</span>
+            </h1>
+            <div class="w-24 h-1 bg-brand-red mb-8"></div>
+            <p
+                class="text-gray-300 font-roboto text-xl max-w-3xl leading-relaxed"
+            >
+                Leuk dat je interesse hebt om je aan te sluiten bij Race Team
+                Wolters! Vul het onderstaande formulier in om je in te
+                schrijven. Na beoordeling sturen we je een uitnodiging voor onze
+                Discord server.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div
+                class="bg-brand-dark p-8 md:p-12 rounded-2xl shadow-2xl border border-white/5 relative overflow-hidden"
+            >
+                <!-- Decorative corner element -->
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-brand-red/10 rounded-bl-full pointer-events-none"
+                >
+                </div>
+
+                <form
+                    class="space-y-8 relative z-10"
+                    name="nieuwe-leden"
+                    method="POST"
+                    data-netlify="true"
+                >
+                    <!-- Persoonlijke Gegevens -->
+                    <div>
+                        <h3
+                            class="text-xl font-headings font-bold text-white uppercase tracking-wider mb-6 border-b border-white/10 pb-2"
+                        >
+                            1. Persoonlijke Gegevens
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="firstName"
+                                    class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                    >Voornaam *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    required
+                                    class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="lastName"
+                                    class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                    >Achternaam *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    required
+                                    class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                                />
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label
+                                for="email"
+                                class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                >E-mailadres *</label
+                            >
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                            />
+                        </div>
+                        <div class="mt-6">
+                            <label
+                                for="age"
+                                class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                >Leeftijd *</label
+                            >
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                                required
+                                min="10"
+                                max="99"
+                                class="w-full md:w-1/3 bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                            />
+                            <p
+                                class="text-xs text-gray-500 mt-2 font-roboto italic"
+                            >
+                                Let op: Voor leden onder de 16 jaar hebben we de
+                                RTW Junior Cup. Mail hiervoor naar
+                                ledenwerving@raceteamwolters.nl
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Gaming Gegevens -->
+                    <div>
+                        <h3
+                            class="text-xl font-headings font-bold text-white uppercase tracking-wider mb-6 border-b border-white/10 pb-2"
+                        >
+                            2. Gaming Profiel
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="psnId"
+                                    class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                    >PlayStation Network (PSN) ID *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="psnId"
+                                    name="psnId"
+                                    required
+                                    class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="discordName"
+                                    class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                    >Discord Gebruikersnaam *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="discordName"
+                                    name="discordName"
+                                    required
+                                    class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                                    placeholder="bijv. racer#1234"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label
+                                for="experience"
+                                class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                >Ervaring in Gran Turismo 7 *</label
+                            >
+                            <select
+                                id="experience"
+                                name="experience"
+                                required
+                                class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red appearance-none"
+                            >
+                                <option value="" disabled selected
+                                    >Kies je niveau</option
+                                >
+                                <option value="Beginner"
+                                    >Beginner (net begonnen / speel af en toe)</option
+                                >
+                                <option value="Gemiddeld"
+                                    >Gemiddeld (speel regelmatig, ken de
+                                    circuits)</option
+                                >
+                                <option value="Gevorderd"
+                                    >Gevorderd (wedstrijdniveau, rijd met stuur
+                                    t.o.v. controller)</option
+                                >
+                                <option value="Alien"
+                                    >Alien (top tijden, alien status)</option
+                                >
+                            </select>
+                        </div>
+
+                        <div class="mt-6">
+                            <label
+                                class="block font-headings uppercase text-sm text-gray-400 font-bold mb-4"
+                                >Hardware</label
+                            >
+                            <div class="flex flex-col space-y-3">
+                                <label class="flex items-center text-gray-300">
+                                    <input
+                                        type="radio"
+                                        name="hardware"
+                                        value="Controller"
+                                        class="h-4 w-4 bg-brand-dark border-white/10 text-brand-red focus:ring-brand-red"
+                                    />
+                                    <span class="ml-3 font-roboto"
+                                        >Controller</span
+                                    >
+                                </label>
+                                <label class="flex items-center text-gray-300">
+                                    <input
+                                        type="radio"
+                                        name="hardware"
+                                        value="Stuur"
+                                        class="h-4 w-4 bg-brand-dark border-white/10 text-brand-red focus:ring-brand-red"
+                                    />
+                                    <span class="ml-3 font-roboto"
+                                        >Stuur & Pedalen</span
+                                    >
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motivatie -->
+                    <div>
+                        <h3
+                            class="text-xl font-headings font-bold text-white uppercase tracking-wider mb-6 border-b border-white/10 pb-2"
+                        >
+                            3. Motivatie
+                        </h3>
+                        <div>
+                            <label
+                                for="motivation"
+                                class="block font-headings uppercase text-sm text-gray-400 font-bold mb-2"
+                                >Waarom wil je bij Race Team Wolters komen? *</label
+                            >
+                            <textarea
+                                id="motivation"
+                                name="motivation"
+                                rows="4"
+                                required
+                                class="w-full bg-brand-gray border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red"
+                                placeholder="Vertel ons kort iets over jezelf en wat je zoekt in ons team..."
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Akkoord -->
+                    <div
+                        class="bg-brand-gray/50 p-6 rounded border-l-4 border-brand-red"
+                    >
+                        <label class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input
+                                    type="checkbox"
+                                    id="rules"
+                                    name="rules"
+                                    required
+                                    class="h-5 w-5 bg-brand-dark border-white/10 rounded text-brand-red focus:ring-brand-red"
+                                />
+                            </div>
+                            <div
+                                class="ml-3 text-sm font-roboto text-gray-300 leading-relaxed"
+                            >
+                                Ik ga akkoord met de huisregels van Race Team
+                                Wolters. Ik begrijp dat respect voor andere
+                                coureurs, zowel op de baan (clean racing) als
+                                daarbuiten (Discord/Forum), de hoogste
+                                prioriteit heeft.
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button
+                            type="submit"
+                            class="bg-brand-red text-white hover:bg-white hover:text-brand-red font-headings font-bold uppercase tracking-wider px-12 py-4 transition-all duration-300 shadow-xl hover:scale-105 w-full sm:w-auto"
+                        >
+                            Verstuur Inschrijving
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

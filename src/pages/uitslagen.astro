@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Using the same winner data from homepage
+const championships = [
+    {
+        name: "Porsche GT3 Cup 2025",
+        winners: [
+            { class: "A", name: "RTW_GeraldWolters", points: 245 },
+            { class: "B", name: "RTW_De_Rikkert", points: 210 },
+            { class: "C", name: "RTW_RoBeY-D", points: 198 },
+            { class: "D", name: "RTW_Wokkel1976", points: 180 },
+        ],
+    },
+    {
+        name: "X-BOW Sponsor Cup 2025",
+        winners: [
+            { class: "A", name: "RTW_PauloooD", points: 310 },
+            { class: "B", name: "RTW_Kenneth v Di", points: 295 },
+            { class: "C", name: "RTW_AlexPr", points: 270 },
+            { class: "D", name: "RTW_Dpdriftig", points: 255 },
+        ],
+    },
+    {
+        name: "Sprint Cup 2025",
+        winners: [
+            { class: "A", name: "RTW_VanQuish", points: 150 },
+            { class: "B", name: "RTW_Grote Smurf", points: 142 },
+            { class: "C", name: "RTW_ThomR", points: 138 },
+            { class: "D", name: "RTW_Wokkel1976", points: 120 },
+        ],
+    },
+];
+---
+
+<BaseLayout
+    title="Uitslagen - Race Team Wolters"
+    description="Bekijk de actuele standen en historische raceuitslagen van alle RTW kampioenschappen."
+>
+    <section class="pt-32 pb-16 bg-brand-dark border-b border-white/5 relative">
+        <div
+            class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row md:justify-between md:items-end"
+        >
+            <div>
+                <h1
+                    class="text-4xl md:text-6xl font-headings font-bold uppercase tracking-wider text-white mb-6 drop-shadow"
+                >
+                    Race <span class="text-brand-yellow">Uitslagen</span>
+                </h1>
+                <div class="w-24 h-1 bg-brand-yellow mb-8"></div>
+                <p
+                    class="text-gray-300 font-roboto text-xl max-w-2xl leading-relaxed"
+                >
+                    Wie is de snelste over de streep? Bekijk hier alle officiële
+                    uitslagen en de Hall of Fame van onze kampioenschappen.
+                </p>
+            </div>
+
+            <div class="mt-8 md:mt-0">
+                <a
+                    href="/forum"
+                    class="inline-flex items-center text-brand-red hover:text-white transition-colors group"
+                >
+                    <span
+                        class="font-headings uppercase font-bold text-sm tracking-widest mr-2"
+                        >Discusseer op het Forum</span
+                    >
+                    <svg
+                        class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="py-24 bg-brand-gray">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+            <!-- Hall of Fame -->
+            <div>
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="text-4xl">🏆</span>
+                    <h2
+                        class="text-3xl font-headings font-bold uppercase tracking-wider text-white"
+                    >
+                        Championship Winners <span class="text-brand-yellow"
+                            >2025</span>
+                    </h2>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {
+                        championships.map((champ) => (
+                            <div class="bg-brand-dark rounded-xl border border-white/10 overflow-hidden shadow-2xl relative group">
+                                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-red to-brand-yellow" />
+
+                                <div class="p-6 bg-white/5 border-b border-white/5">
+                                    <h3 class="text-xl font-headings font-bold text-white uppercase text-center tracking-wider">
+                                        {champ.name}
+                                    </h3>
+                                </div>
+
+                                <div class="p-6">
+                                    <ul class="space-y-4">
+                                        {champ.winners.map((winner, index) => (
+                                            <li class="flex items-center justify-between p-3 rounded bg-white/5 hover:bg-white/10 transition-colors border-l-4 border-transparent hover:border-brand-red">
+                                                <div class="flex items-center gap-4">
+                                                    <span
+                                                        class={`font-headings font-bold text-lg w-6 text-center ${index === 0 ? "text-brand-yellow" : "text-gray-500"}`}
+                                                    >
+                                                        {winner.class}
+                                                    </span>
+                                                    <span class="font-roboto text-gray-200">
+                                                        {winner.name}
+                                                    </span>
+                                                </div>
+                                                <div class="text-brand-red font-headings font-bold text-sm">
+                                                    {winner.points} pt
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Recent Results Table placeholder -->
+            <div class="border-t border-white/10 pt-24">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="text-4xl">⏱️</span>
+                    <h2
+                        class="text-3xl font-headings font-bold uppercase tracking-wider text-white"
+                    >
+                        Recente Standen <span class="text-brand-red"
+                            >(Lopend)</span>
+                    </h2>
+                </div>
+
+                <div
+                    class="bg-brand-dark rounded-xl border border-white/5 p-8 text-center"
+                >
+                    <svg
+                        class="w-16 h-16 text-gray-600 mx-auto mb-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1.5"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                        ></path>
+                    </svg>
+                    <h3
+                        class="text-xl font-headings uppercase text-gray-400 font-bold mb-2"
+                    >
+                        Automatisering in ontwikkeling
+                    </h3>
+                    <p class="text-gray-500 font-roboto max-w-xl mx-auto">
+                        In de toekomst worden actuele race standen hier
+                        automatisch gesynchroniseerd via een API met onze
+                        in-game data en community tools.
+                    </p>
+                    <p
+                        class="text-brand-yellow font-roboto mt-4 text-sm mt-8 border border-brand-yellow/30 p-4 inline-block rounded"
+                    >
+                        Zie het forum (sectie Updates) voor wekelijkse
+                        tussenstanden post!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

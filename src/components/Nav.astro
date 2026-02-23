@@ -1,13 +1,25 @@
 ---
 const { isMobile = false } = Astro.props;
 
-const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Dagelijkse Races", href: "/dagelijkseraces" },
-    { label: "Evenementen", href: "/evenementen" },
+interface NavItem {
+    label: string;
+    href: string;
+    class?: string;
+    subItems?: { label: string; href: string }[];
+}
+
+const navItems: NavItem[] = [
+    {
+        label: "Menu",
+        href: "#",
+        subItems: [
+            { label: "Dagelijkse Races", href: "/dagelijkseraces" },
+            { label: "Evenementen", href: "/evenementen" },
+            { label: "Uitslagen", href: "/uitslagen" },
+            { label: "Merchandise & Sponsoren", href: "/merchandise" },
+        ],
+    },
     { label: "Content team", href: "/content-team" },
-    { label: "Uitslagen", href: "/uitslagen" },
-    { label: "Merchandise & Sponsoren", href: "/merchandise" },
     {
         label: "Media",
         href: "/media",
@@ -55,12 +67,14 @@ const baseClasses = isMobile
                             aria-orientation="vertical"
                             aria-labelledby="options-menu"
                         >
-                            <a
-                                href={item.href}
-                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-brand-dark hover:text-white font-headings uppercase"
-                            >
-                                Overview
-                            </a>
+                            {item.href !== "#" && (
+                                <a
+                                    href={item.href}
+                                    class="block px-4 py-2 text-sm text-gray-300 hover:bg-brand-dark hover:text-white font-headings uppercase"
+                                >
+                                    Overview
+                                </a>
+                            )}
                             {item.subItems.map((subItem) => (
                                 <a
                                     href={subItem.href}
@@ -75,14 +89,27 @@ const baseClasses = isMobile
                 </div>
             ) : (
                 <>
-                    <a
-                        href={item.href}
-                        class={
-                            baseClasses + (item.class ? ` ${item.class}` : "")
-                        }
-                    >
-                        {item.label}
-                    </a>
+                    {item.href !== "#" && (
+                        <a
+                            href={item.href}
+                            class={
+                                baseClasses +
+                                (item.class ? ` ${item.class}` : "")
+                            }
+                        >
+                            {item.label}
+                        </a>
+                    )}
+                    {item.href === "#" && (
+                        <div
+                            class={
+                                baseClasses +
+                                (item.class ? ` ${item.class}` : "")
+                            }
+                        >
+                            {item.label}
+                        </div>
+                    )}
                     {item.subItems && isMobile && (
                         <div class="pl-6 space-y-1">
                             {item.subItems.map((subItem) => (
